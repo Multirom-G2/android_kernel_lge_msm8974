@@ -35,13 +35,14 @@
 #endif
 */
 
+/*Test 1 for the value of HB_PAGE_ADDR for the G2, 
+END_MEN=05cfffff and KEXEC_HB_PAGE_ADDR is located 1mb before console ram so the KEXEC_HB_PAGE_ADDR is calculated
+by 05cfffff+1=05d00000 so the value should be 0x05d0000 and the KEXEC_HB_KERNEL_LOC is set at 0x4800000 as the bootloader
+is also preserving some space of the ram*/
 #if defined(CONFIG_KEXEC_HARDBOOT)
-#define KEXEC_HB_PAGE_ADDR	UL(0xDD800000)
+#define KEXEC_HB_PAGE_ADDR	    UL(0x05d00000)           
 #define KEXEC_HB_KERNEL_LOC	UL(0x4800000)
 #endif
-
-/* #define KEXEC_HB_PAGE_ADDR UL(0x7D800000) this is good for the 2Gb version*/
-/*#define KEXEC_HB_PAGE_ADDR UL(0xDD800000) this is good for the 3Gb version*/
 
 #define MAX_PHYSMEM_BITS 32
 #define SECTION_SIZE_BITS 28
